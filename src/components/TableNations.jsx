@@ -6,17 +6,14 @@ import ModalComp from "./ModalComp";
 
 const TableNations = () => {
   const [nations, setNations] = useState([]);
-  const [search, setSearch] = useState("");
-  const [filteredNation, setFilteredNation] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [selectedRowData, setSelectedRowData] = useState(null);
   const [type, setType] = useState("");
-
+  const [searchQuery, setSearchQuery] = useState("");
   const Nations = async () => {
     try {
       const { data } = await nationService.getNations();
       setNations(data);
-      setFilteredNation(data);
     } catch (error) {
       console.log(error);
     }
@@ -47,13 +44,6 @@ const TableNations = () => {
     setOpenModal(true);
     setType("delete");
   };
-
-  useEffect(() => {
-    const result = nations.filter((nation) => {
-      return nation.name.toLowerCase().match(search.toLowerCase());
-    });
-    setFilteredNation(result);
-  }, [search, nations]);
 
   const columns = [
     { name: "Image", selector: (row) => <img src={row.image} alt={row.name} height="50" width={50} /> },
@@ -86,7 +76,13 @@ const TableNations = () => {
         <DataTable
           title="Nation List"
           columns={columns}
-          data={filteredNation}
+          data={
+            nations?.filter(
+              (nation) =>
+                nation.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                nation.description.toLowerCase().includes(searchQuery.toLowerCase())
+            ) ?? []
+          }
           pagination
           paginationPerPage={5}
           highlightOnHover
@@ -100,8 +96,8 @@ const TableNations = () => {
               <input
                 type={"text"}
                 placeholder="Search Nations Name"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-25 form-control"
               />
             </div>

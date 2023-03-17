@@ -5,18 +5,15 @@ import DataTable from "react-data-table-component";
 import ModalComp from "./ModalComp";
 const TablePlayers = () => {
   const [players, setPlayers] = useState([]);
-  const [search, setSearch] = useState("");
-  const [filteredPlayer, setFilteredPlayer] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [selectedRowData, setSelectedRowData] = useState(null);
   const [type, setType] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
   const Players = async () => {
     try {
       const { data } = await playerService.getPlayers();
-
       setPlayers(data);
-      setFilteredPlayer(data);
     } catch (error) {
       console.log(error);
     }
@@ -49,13 +46,6 @@ const TablePlayers = () => {
     setOpenModal(true);
     setType("delete");
   };
-
-  useEffect(() => {
-    const result = players.filter((player) => {
-      return player.name.toLowerCase().match(search.toLowerCase());
-    });
-    setFilteredPlayer(result);
-  }, [search]);
 
   const columns = [
     { name: "Image", selector: (row) => <img src={row.image} alt={row.name} height="50" width={50} /> },
@@ -92,7 +82,7 @@ const TablePlayers = () => {
         <DataTable
           title="Players List"
           columns={columns}
-          data={filteredPlayer}
+          data={players?.filter((player) => player.name.toLowerCase().includes(searchQuery.toLowerCase())) ?? []}
           pagination
           paginationPerPage={5}
           highlightOnHover
@@ -106,8 +96,8 @@ const TablePlayers = () => {
               <input
                 type={"text"}
                 placeholder="Search Player Name"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-25 form-control"
               />
             </div>
