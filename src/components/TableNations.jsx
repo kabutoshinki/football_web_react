@@ -88,7 +88,7 @@ const TableNations = () => {
           columns={columns}
           data={filteredNation}
           pagination
-          paginationPerPage={3}
+          paginationPerPage={5}
           highlightOnHover
           subHeader
           subHeaderStyles={{ display: "flex", justifyContent: "space-between" }}

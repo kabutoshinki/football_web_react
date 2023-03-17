@@ -13,6 +13,9 @@ import { AuthContext } from "./context/AuthContext";
 import SignUp from "./pages/SignUp";
 import Profile from "./pages/Profile";
 import Search from "./pages/Search";
+import ForgotPassword from "./pages/ForgotPassword";
+import ConfirmOTP from "./pages/ConfirmOTP";
+import ResetPassword from "./pages/ResetPassword";
 function App() {
   const { user } = useContext(AuthContext);
   console.log(user);
@@ -104,6 +107,9 @@ function App() {
         />
         <Route path="/login" exact element={<Login />} />
         <Route path="/register" exact element={<SignUp />} />
+        <Route path="/forgotPassword" exact element={<ForgotPassword />} />
+        <Route path="/confirmOTP" exact element={<ConfirmOTP />} />
+        <Route path="/resetPassword" exact element={<ResetPassword />} />
       </Routes>
     </BrowserRouter>
   );

@@ -23,6 +23,23 @@ export async function editProfile(formData) {
   return axios.post(apiEndpoint + `api/v1/auth/updateProfile`, formData);
 }
 
+export async function verifyEmail(formData) {
+  console.log(formData);
+  return axios.post(apiEndpoint + `api/v1/auth/verifyEmail`, formData);
+}
+
+export async function confirmOTP(formData) {
+  return axios.post(apiEndpoint + `api/v1/auth/confirmOTP`, formData);
+}
+
+export async function resendOTP(formData) {
+  return axios.post(apiEndpoint + `api/v1/auth/resendOTP`, formData);
+}
+
+export async function resetPassword(formData) {
+  return axios.post(apiEndpoint + `api/v1/auth/resetPassword`, formData);
+}
+
 export function getCurrentUser() {
   try {
     const token = localStorage.getItem("accessToken");

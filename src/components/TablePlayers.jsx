@@ -94,7 +94,7 @@ const TablePlayers = () => {
           columns={columns}
           data={filteredPlayer}
           pagination
-          paginationPerPage={3}
+          paginationPerPage={5}
           highlightOnHover
           subHeader
           subHeaderStyles={{ display: "flex", justifyContent: "space-between" }}

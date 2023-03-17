@@ -69,7 +69,11 @@ const Login = () => {
                     <Form.Group className="mb-3">
                       <div className="mb-2 w-100">
                         <Form.Label className="text-muted">Password</Form.Label>
+                        <Link to={"/forgotPassword"} className="float-end text-info">
+                          Forgot Password?
+                        </Link>
                       </div>
+
                       <Form.Control
                         type="password"
                         name="password"

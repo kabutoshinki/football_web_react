@@ -115,7 +115,7 @@ const Navbar = () => {
               </Form>
               {user ? (
                 <div style={{ marginLeft: "auto" }}>
-                  <Link to={`/profile/${user.id}`} className="ml-auto btn btn-primary ms-3">
+                  <Link to={`/profile/${user.id}`} className="ml-auto btn btn-warning ms-3 text-white">
                     Profile
                   </Link>
                   <Button className="btn btn-primary ms-3" onClick={handleLogout}>
@@ -127,7 +127,7 @@ const Navbar = () => {
                   <Link to={"/login"} className="ml-auto btn btn-primary ms-3">
                     Login
                   </Link>
-                  <Link to={"/register"} className="btn btn-primary ms-3">
+                  <Link to={"/register"} className="btn btn-secondary ms-3">
                     SignUp
                   </Link>
                 </div>

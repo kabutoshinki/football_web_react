@@ -378,7 +378,7 @@ export const AddPlayer = ({ onClose, onCreateSuccess }) => {
         <Col xs={6}>
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Label>Goals</Form.Label>
-            <Form.Control type="number" name="goals" defaultValue={0} onChange={handleInputChange} />
+            <Form.Control type="number" name="goals" defaultValue={0} min={0} max={500} onChange={handleInputChange} />
           </Form.Group>
         </Col>
         <Col xs={6}>
@@ -610,6 +610,8 @@ export const UpdatePlayer = ({ onClose, data, type, onCreateSuccess }) => {
               type="number"
               name="goals"
               value={formData.goals}
+              min={0}
+              max={500}
               disabled={type !== undefined && type === "view" ? true : false}
               onChange={handleInputChange}
             />
@@ -820,6 +822,8 @@ export const UpdateProfileUser = ({ onClose, data, onCreateSuccess }) => {
                 placeholder="Enter date of birth"
                 name="dob"
                 value={formatDate(formData.dob)}
+                min="2001-01-01"
+                max="2015-12-31"
                 onChange={handleInputChange}
               />
             </Form.Group>

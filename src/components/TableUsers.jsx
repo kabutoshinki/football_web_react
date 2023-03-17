@@ -55,7 +55,7 @@ const TableUsers = () => {
           columns={columns}
           data={filteredUser}
           pagination
-          paginationPerPage={3}
+          paginationPerPage={5}
           highlightOnHover
           subHeader
           // subHeaderStyles={{ display: "flex", justifyContent: "space-between" }}

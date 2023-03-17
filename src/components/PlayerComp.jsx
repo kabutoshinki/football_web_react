@@ -102,24 +102,27 @@ const PlayerComp = () => {
           </Card>
         ))}
       </Grid>
-      <ReactPaginate
-        className=""
-        previousLabel={"<"}
-        breakLabel={"..."}
-        nextLabel={">"}
-        pageCount={pageCount}
-        onPageChange={handlePageClick}
-        containerClassName={"pagination justify-content-center mt-5"}
-        pageClassName={"page-item"}
-        pageLinkClassName={"page-link"}
-        previousClassName={"page-item"}
-        previousLinkClassName={"page-link"}
-        nextClassName={"page-item"}
-        nextLinkClassName={"page-link"}
-        breakLinkClassName={"page-link"}
-        breakClassName={"page-item"}
-        activeLinkClassName={"active"}
-      />
+
+      {total <= 1 ? null : (
+        <ReactPaginate
+          className=""
+          previousLabel={"<"}
+          breakLabel={"..."}
+          nextLabel={">"}
+          pageCount={pageCount}
+          onPageChange={handlePageClick}
+          containerClassName={"pagination justify-content-center mt-5"}
+          pageClassName={"page-item"}
+          pageLinkClassName={"page-link"}
+          previousClassName={"page-item"}
+          previousLinkClassName={"page-link"}
+          nextClassName={"page-item"}
+          nextLinkClassName={"page-link"}
+          breakLinkClassName={"page-link"}
+          breakClassName={"page-item"}
+          activeLinkClassName={"active"}
+        />
+      )}
     </Box>
   );
 };
