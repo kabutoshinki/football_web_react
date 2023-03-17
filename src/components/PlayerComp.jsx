@@ -103,7 +103,7 @@ const PlayerComp = () => {
         ))}
       </Grid>
 
-      {total <= 1 ? null : (
+      {pageCount <= 1 ? null : (
         <ReactPaginate
           className=""
           previousLabel={"<"}
